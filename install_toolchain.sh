@@ -1,27 +1,38 @@
 #!/bin/bash
 # Written by etachott
 
-# Global variables
-
+# Configuration and global variables
+set +h
+set -e
+umask 022
 LFS=/mnt/lfs
-WGET_LIST=./wget_list
+LFS_SOURCES=$LFS/sources
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-ft-linux-gnu
+PATH=/tools/bin:/bin:/usr/bin
+RECIPE_DIR="$LFS/ft_linux/recipes/tools"
 
-# Create source directory if not exists
+for recipe in "$RECIPE_DIR"/*.sh; do
+	echo
+	echo "============================================================"
+	echo "  Building: $(basename "$recipe")"
+	echo "============================================================"
 
-if [[ ! -d $LFS/sources ]]; then
-	echo "Creating sources directory..."
-	mkdir -v $LFS/sources
-	chmod -v a+wt $LFS/sources
-else
-	echo "Sources directory already created!"
-fi
+	source "$recipe"
 
-# Downloads packages to $LFS/sources if not downloaded yet
+	echo ">> Extracting package..."
+	tar -xf "$LFS_SOURCES/$RECIPE_TAR" -C $LFS_SOURCES
 
-if [ -z "$(ls -A $LFS/sources)" ]; then
-	echo "Downloading packages..."
-	wget --input-file=$WGET_LIST --continue --directory-prefix=$LFS/sources
-else
-	echo "Packages already downloaded!"
-fi
+	echo ">> Building package $RECIPE_NAME..."
+	build
 
+	echo ">> Cleaning up dir..."
+	rm -rf "$LFS_SOURCES/$RECIPE_NAME"
+
+	echo "============================================================"
+	echo "  Finished: $(basename "$recipe")"
+	echo "============================================================"
+done
+
+echo
+echo "Toolchain compiled and installed successfully!"
