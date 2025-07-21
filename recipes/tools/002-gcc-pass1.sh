@@ -1,7 +1,11 @@
+# Written by etachott
+
 RECIPE_NAME="gcc-5.3.0"
 RECIPE_TAR="gcc-5.3.0.tar.bz2"
 
 build() {
+	CXXFLAGS="-std=gnu++98"
+
 	# Move dependencies in
 	tar -xf ../mpfr-3.1.3.tar.xz
 	mv -v mpfr-3.1.3 mpfr
@@ -30,26 +34,26 @@ build() {
 	mkdir -v build
 	cd build
 	../configure \
-	--target=$LFS_TGT \
-	--prefix=/tools \
-	--with-glibc-version=2.11 \
-	--with-sysroot=$LFS \
-	--with-newlib \
-	--without-headers \
-	--with-local-prefix=/tools \
-	--with-native-system-header-dir=/tools/include \
-	--disable-nls \
-	--disable-shared \
-	--disable-multilib \
-	--disable-decimal-float \
-	--disable-threads \
-	--disable-libatomic \
-	--disable-libgomp \
-	--disable-libquadmath \
-	--disable-libssp \
-	--disable-libvtv \
-	--disable-libstdcxx \
-	--enable-languages=c,c++
+		--target=$LFS_TGT \
+		--prefix=/tools \
+		--with-glibc-version=2.11 \
+		--with-sysroot=$LFS \
+		--with-newlib \
+		--without-headers \
+		--with-local-prefix=/tools \
+		--with-native-system-header-dir=/tools/include \
+		--disable-nls \
+		--disable-shared \
+		--disable-multilib \
+		--disable-decimal-float \
+		--disable-threads \
+		--disable-libatomic \
+		--disable-libgomp \
+		--disable-libquadmath \
+		--disable-libssp \
+		--disable-libvtv \
+		--disable-libstdcxx \
+		--enable-languages=c,c++
 	make
 	make install
 }
