@@ -11,7 +11,7 @@ build() {
 }
 
 is_installed() {
-	local sample_file="diff"
+	local sample_file="file"
 
 	if [ -f "$LFS/tools/bin/$sample_file" ]; then
 		return 0
