@@ -1,7 +1,7 @@
 # Written by etachott
 
-RECIPE_NAME="coreutils-8.25"
-RECIPE_TAR="coreutils-8.25.tar.xz"
+RECIPE_NAME="diffutils-3.3"
+RECIPE_TAR="diffutils-3.3.tar.xz"
 
 build() {
 	./configure --prefix=/tools
