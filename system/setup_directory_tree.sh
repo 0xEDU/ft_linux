@@ -1,3 +1,7 @@
+# Written by etachott
+
+set -e
+
 # Create standard directory tree
 mkdir -pv /{bin,boot,etc/{opt,sysconfig},home,lib/firmware,mnt,opt}
 mkdir -pv /{media/{floppy,cdrom},sbin,srv,var}

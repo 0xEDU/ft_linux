@@ -11,3 +11,11 @@ chroot "$LFS" /tools/bin/env -i \
 	/tools/bin/bash --login +h /ft_linux/system/setup_directory_tree.sh
 echo "Directory tree created!"
 
+chroot "$LFS" /tools/bin/env -i \
+	HOME=/root                  \
+	TERM="$TERM"                \
+	PS1='\u:\w\$ '              \
+	PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
+	/tools/bin/bash --login +h /ft_linux/system/setup_essential_files.sh
+echo "Essential files created!"
+
