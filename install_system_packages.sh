@@ -1,6 +1,8 @@
 #!/bin/bash
 # Written by etachott
 
+LFS=/mnt/lfs
+
 chroot "$LFS" /tools/bin/env -i \
 	HOME=/root \
 	TERM="$TERM" \
