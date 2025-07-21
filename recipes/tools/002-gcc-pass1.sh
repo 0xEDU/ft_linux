@@ -4,7 +4,6 @@ RECIPE_NAME="gcc-5.3.0"
 RECIPE_TAR="gcc-5.3.0.tar.bz2"
 
 build() {
-	CXXFLAGS="-std=gnu++98"
 
 	# Move dependencies in
 	tar -xf ../mpfr-3.1.3.tar.xz
@@ -54,7 +53,7 @@ build() {
 		--disable-libvtv \
 		--disable-libstdcxx \
 		--enable-languages=c,c++
-	make
+	make CXXFLAGS="-std=gnu++98"
 	make install
 }
 
