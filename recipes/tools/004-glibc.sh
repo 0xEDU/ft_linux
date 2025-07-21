@@ -24,5 +24,11 @@ build() {
 }
 
 is_installed() {
-	return 1
+	local sample_file="ldd"
+
+	if [ -f "$LFS/tools/bin/$sample_file" ]; then
+		return 0
+	else
+		return 1
+	fi
 }
