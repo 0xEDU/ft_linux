@@ -24,7 +24,7 @@ build() {
 }
 
 is_installed() {
-	local sample_file="ld"
+	local sample_file="ld-new"
 
 	if [ -f "$LFS/tools/bin/$sample_file" ]; then
 		return 0
