@@ -12,4 +12,6 @@ The build is divided into several steps, following roughly [Linux From Scratch 7
 2. Inside the mounted dir, clone this repo.
 3. Run `bash setup_toolchain_installation.sh` to create the needed folders and a new user `lfs`.
 4. Run `su - lfs $PWD/install_toolchain.sh` to build and install the temporary toolchain. Should take a while.
-5. Run `bash post_toolchain_installation.sh` to mount the needed Virtual Kernel File Systems
+5. Run `bash post_toolchain_installation.sh` to mount the needed Virtual Kernel File Systems.
+6. Run `bash setup_system_installation.sh` to prepare the new system for package installation.
+7. Run `bash install_system_packages.sh` to install the packages in the new system.
