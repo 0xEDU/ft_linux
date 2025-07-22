@@ -47,7 +47,7 @@ build() {
 }
 
 is_installed() {
-	local sample_file="/bin/ldd"
+	local sample_file="/usr/bin/ldd"
 
 	if [ -f "$sample_file" ]; then
 		return 0
